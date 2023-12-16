@@ -27,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "+6f_69(adil3*+=7nqusbrhp=#&*3yjs)-m^44-#58v_48#w1o"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG") == "True"
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -58,7 +58,7 @@ THIRD_PARTY_APPS = [
 PROJECT_APPS = [
     "core.apps.CoreConfig",
     "store.apps.StoreConfig",
-    "account",
+    "account.apps.AccountConfig",
 ]
 
 MIDDLEWARE = [
@@ -72,12 +72,12 @@ MIDDLEWARE = [
     "simple_history.middleware.HistoryRequestMiddleware",
 ]
 
-if os.environ.get("ENABLE_DEBUG_TOOLBAR", False) == "True":
+if True:
     THIRD_PARTY_APPS.append("debug_toolbar")
     MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
     INTERNAL_IPS = ["127.0.0.1"]
 
-if os.environ.get("ENABLE_CORS_HEADERS", False) == "True":
+if True:
     THIRD_PARTY_APPS.append("corsheaders")
     MIDDLEWARE[2] = "corsheaders.middleware.CorsMiddleware"
 
@@ -197,4 +197,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
+
 AUTH_USER_MODEL = "account.User"
