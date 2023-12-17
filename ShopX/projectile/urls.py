@@ -29,7 +29,7 @@ admin.site.site_header = "shopX Ecommerce"
 admin.site.index_title = "Admin Dashboard"
 
 urlpatterns = [
-    path("account", include("account.urls")),
+    path("user-auth", include("account.urls")),
     path("admin/", admin.site.urls),
     # drf session auth
     path("api-auth/", include("rest_framework.urls")),
