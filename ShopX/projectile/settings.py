@@ -27,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "+6f_69(adil3*+=7nqusbrhp=#&*3yjs)-m^44-#58v_48#w1o"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -72,12 +72,12 @@ MIDDLEWARE = [
     "simple_history.middleware.HistoryRequestMiddleware",
 ]
 
-if True:
+if os.getenv("ENABLE_DEBUG_TOOLBAR", "False") == "True":
     THIRD_PARTY_APPS.append("debug_toolbar")
     MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
     INTERNAL_IPS = ["127.0.0.1"]
 
-if True:
+if os.getenv("ENABLE_CORS_HEADERS", "False") == "True":
     THIRD_PARTY_APPS.append("corsheaders")
     MIDDLEWARE[2] = "corsheaders.middleware.CorsMiddleware"
 
